@@ -9,7 +9,7 @@ private:
     const Bag& bag;
     //TODO  - Representation
 
-    Node *current;
+
 
 
 
