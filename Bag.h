@@ -4,19 +4,19 @@
 
 //DO NOT CHANGE THIS PART
 #define NULL_TELEM -111111;
+#include <utility>
 typedef int TElem;
 class BagIterator;
 class Bag {
 
 	struct Node {
-		TElem data;
+		std::pair<TElem, int> data; //elem, frecv
 		Node *next;
 		Node *prev;
 	};
 
 private:
 	//TODO - Representation
-
 	Node *head;
 	Node *tail;
 
