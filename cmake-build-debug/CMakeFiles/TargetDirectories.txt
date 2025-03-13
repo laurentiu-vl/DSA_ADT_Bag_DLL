@@ -1,0 +1,3 @@
+C:/Laurentiu/SDA_2024-2025/Labor/DSA_Bag_DLL_L2/cmake-build-debug/CMakeFiles/DSA_Bag_DLL_L2.dir
+C:/Laurentiu/SDA_2024-2025/Labor/DSA_Bag_DLL_L2/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Laurentiu/SDA_2024-2025/Labor/DSA_Bag_DLL_L2/cmake-build-debug/CMakeFiles/rebuild_cache.dir
