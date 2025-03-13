@@ -9,9 +9,7 @@ private:
     const Bag& bag;
     //TODO  - Representation
 
-
-
-
+    Bag::Node *current;
 
     BagIterator(const Bag& c);
 public:
