@@ -38,11 +38,12 @@ void Bag::add(TElem elem) {
             //current = current->next;
 
             if (current == tail && current->data.first != elem) {
-                Node *lastNode = new Node();
-                lastNode->data = make_pair(elem, 1);
-                lastNode->next = nullptr;
-                lastNode->prev = current;
-                tail = lastNode;
+                Node *nodeToBeInsertedLast = new Node();
+                current->next = nodeToBeInsertedLast;
+                nodeToBeInsertedLast->data = make_pair(elem, 1);
+                nodeToBeInsertedLast->next = nullptr;
+                nodeToBeInsertedLast->prev = current;
+                tail = nodeToBeInsertedLast;
                 break;
             }
             current = current->next;
@@ -88,16 +89,26 @@ int Bag::nrOccurrences(TElem elem) const {
 int Bag::size() const {
 
     int sizeOf = 0;
+    Node *current = head;
 
-    try {
-        while (iterator().getCurrent()) {
-            sizeOf++;
-        }
-    }
-    catch (exception& e) {
-        return sizeOf;
+    while (current != nullptr) {
+        sizeOf += current->data.second;
+        current = current->next;
     }
     return sizeOf;
+
+    // try {
+    //     while (iterator().getCurrent()) { //nu se actualizeaza current
+    //         //sizeOf++;
+    //         sizeOf += iterator().current->data.second;
+    //         iterator().next();
+    //         cout << sizeOf;
+    //     }
+    // }
+    // catch (exception& e) {
+    //     return sizeOf;
+    // }
+    // return sizeOf;
 
 }
 
