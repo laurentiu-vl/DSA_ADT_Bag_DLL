@@ -55,21 +55,32 @@ bool Bag::remove(TElem elem) {
 
 bool Bag::search(TElem elem) const {
 
-    BagIterator it = iterator();
+    Node *current = head;
 
-    while (it.valid()) {
-        if (it.getCurrent() == elem) {
+    while (current != nullptr) {
+        if (current->data.first == elem) {
             return true;
         }
-        it.next();
+        current = current->next;
     }
     return false;
+
+    // BagIterator it = iterator();
+    //
+    // while (it.valid()) {
+    //     if (it.getCurrent() == elem) {
+    //         return true;
+    //     }
+    //     it.next();
+    // }
+    // return false;
 
 }
 
 int Bag::nrOccurrences(TElem elem) const {
 
     Node *current = head;
+
     while (current != nullptr) {
         if (current->data.first == elem) {
             return current->data.second;
