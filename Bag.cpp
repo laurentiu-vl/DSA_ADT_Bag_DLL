@@ -15,9 +15,30 @@ Bag::Bag() {
 
 }
 
-
 void Bag::add(TElem elem) {
-    //TODO - Implementation
+
+    //case Bag is with no elems
+    if (head == nullptr) {
+        Node *firstNode = new Node();
+        firstNode->data = make_pair(elem, 1);
+        firstNode->next = nullptr;
+        firstNode->prev = nullptr;
+        head = firstNode;
+        tail = firstNode;
+    }
+
+    //case Bag contains the elem
+    Node *current = head;
+    while (current != nullptr) {
+        if (current->data.first == elem) {
+            current->data.second++;
+        }
+        current = current->next;
+    }
+
+    //case Bag does not contain
+    //TODO
+
 }
 
 
@@ -78,6 +99,7 @@ bool Bag::isEmpty() const {
 BagIterator Bag::iterator() const {
 
     return BagIterator(*this);
+
 }
 
 
