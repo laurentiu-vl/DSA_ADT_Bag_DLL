@@ -14,6 +14,9 @@ BagIterator::BagIterator(const Bag& c): bag(c)
 {
 
     current = bag.head;
+    // if (size()) {
+    //
+    // }
 
 }
 
@@ -22,7 +25,6 @@ void BagIterator::first() {
     current = bag.head;
 
 }
-
 
 void BagIterator::next() {
 
