@@ -6,8 +6,12 @@ using namespace std;
 
 
 Bag::Bag() {
-    //TODO - Implementation
 
+    head = nullptr;
+    tail = nullptr;
+    //next = nullptr;
+    //prev = nullptr;
+    //pair?
 
 }
 
@@ -29,23 +33,38 @@ bool Bag::search(TElem elem) const {
 }
 
 int Bag::nrOccurrences(TElem elem) const {
-    //TODO - Implementation
-    return 0;
+
+    int count = 0;
+    BagIterator it = iterator();
+
+    while (it().getCurrent() == elem) {
+        count++;
+    }
+    return count;
+
 }
 
 
 int Bag::size() const {
-    //TODO - Implementation
-    return 0;
+
+    int sizeOf = 0;
+    while (iterator().getCurrent()) {
+        sizeOf++;
+    }
+    return sizeOf;
+
 }
 
 
 bool Bag::isEmpty() const {
-    //TODO - Implementation
-    return 0;
+
+    if (head == nullptr) {
+        return true;
+    }
 }
 
 BagIterator Bag::iterator() const {
+
     return BagIterator(*this);
 }
 
