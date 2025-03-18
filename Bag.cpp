@@ -41,7 +41,6 @@ void Bag::add(TElem elem) {
 
 }
 
-
 bool Bag::remove(TElem elem) {
     //TODO - Implementation
     return false;
@@ -87,7 +86,6 @@ int Bag::size() const {
     return sizeOf;
 
 }
-
 
 bool Bag::isEmpty() const {
 
