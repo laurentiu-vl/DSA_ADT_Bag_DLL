@@ -108,7 +108,6 @@ BagIterator Bag::iterator() const {
 
 }
 
-
 Bag::~Bag() {
     //TODO - Implementation
 }
