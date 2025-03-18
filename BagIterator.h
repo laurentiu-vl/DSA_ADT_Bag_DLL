@@ -9,7 +9,7 @@ private:
     const Bag& bag;
 
     Bag::Node *current;
-    int freq;
+    //int freq;
 
     BagIterator(const Bag& c);
 public:
