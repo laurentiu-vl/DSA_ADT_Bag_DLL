@@ -16,7 +16,7 @@ class Bag {
 	};
 
 private:
-	//TODO - Representation
+
 	Node *head;
 	Node *tail;
 
