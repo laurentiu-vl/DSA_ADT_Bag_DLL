@@ -69,15 +69,22 @@ bool Bag::search(TElem elem) const {
 
 int Bag::nrOccurrences(TElem elem) const {
 
-    BagIterator it = iterator();
-
-    while (it.valid()) {
-        if (it.getCurrent() == elem) {
-            return it.current->data.second;
+    Node *current = head;
+    while (current != nullptr) {
+        if (current->data.first == elem) {
+            return current->data.second;
         }
-        it.next();
     }
-    return 0;
+
+    // BagIterator it = iterator();
+    //
+    // while (it.valid()) {
+    //     if (it.getCurrent() == elem) {
+    //         return it.current->data.second;
+    //     }
+    //     it.next();
+    // }
+    // return 0;
 
 }
 
