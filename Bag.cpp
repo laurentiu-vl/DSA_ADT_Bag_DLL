@@ -74,7 +74,9 @@ int Bag::nrOccurrences(TElem elem) const {
         if (current->data.first == elem) {
             return current->data.second;
         }
+        current = current->next;
     }
+    return 0;
 
     // BagIterator it = iterator();
     //
