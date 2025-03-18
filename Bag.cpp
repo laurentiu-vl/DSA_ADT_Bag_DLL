@@ -32,6 +32,7 @@ void Bag::add(TElem elem) {
         while (current != nullptr) {
             if (current->data.first == elem) {
                 current->data.second++;
+                break;
             }
             //current = current->next;
 
@@ -41,6 +42,7 @@ void Bag::add(TElem elem) {
                 lastNode->next = nullptr;
                 lastNode->prev = current;
                 tail = lastNode;
+                break;
             }
             current = current->next;
         }
