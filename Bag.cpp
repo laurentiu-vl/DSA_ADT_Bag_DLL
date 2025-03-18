@@ -2,6 +2,7 @@
 #include "BagIterator.h"
 #include <exception>
 #include <iostream>
+#include <exception>
 using namespace std;
 
 
@@ -87,8 +88,14 @@ int Bag::nrOccurrences(TElem elem) const {
 int Bag::size() const {
 
     int sizeOf = 0;
-    while (iterator().getCurrent()) {
-        sizeOf++;
+
+    try {
+        while (iterator().getCurrent()) {
+            sizeOf++;
+        }
+    }
+    catch (exception& e) {
+        return sizeOf;
     }
     return sizeOf;
 
