@@ -10,9 +10,6 @@ Bag::Bag() {
 
     head = nullptr;
     tail = nullptr;
-    //next = nullptr;
-    //prev = nullptr;
-    //pair?
 
 }
 
@@ -35,7 +32,6 @@ void Bag::add(TElem elem) {
                 current->data.second++;
                 break;
             }
-            //current = current->next;
 
             if (current == tail && current->data.first != elem) {
                 Node *nodeToBeInsertedLast = new Node();
@@ -73,7 +69,6 @@ bool Bag::search(TElem elem) const {
 
 int Bag::nrOccurrences(TElem elem) const {
 
-    //int count = 0;
     BagIterator it = iterator();
 
     while (it.valid()) {
