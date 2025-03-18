@@ -49,6 +49,7 @@ TElem BagIterator::getCurrent() const {
     if (!valid()) {
         throw std::out_of_range("Iterator out of range");
     }
-    return current->data.first && current->data.second; //e ok doar elementul TElem? sau trebuie si frecventa? TElem BagIterator...
+    return current->data.first;
+    //&& current->data.second; //e ok doar elementul TElem? sau trebuie si frecventa? TElem BagIterator...
 
 }
