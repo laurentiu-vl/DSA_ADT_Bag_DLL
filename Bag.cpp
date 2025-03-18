@@ -37,8 +37,10 @@ int Bag::nrOccurrences(TElem elem) const {
     int count = 0;
     BagIterator it = iterator();
 
-    while (it().getCurrent() == elem) {
-        count++;
+    while (it.valid()) {
+        if (it.getCurrent() == elem) {
+            count++;
+        }
     }
     return count;
 
