@@ -48,8 +48,21 @@ void Bag::add(TElem elem) {
 }
 
 bool Bag::remove(TElem elem) {
-    //TODO - Implementation
-    return false;
+
+    if (head == nullptr) { //if no elem in Bag
+        return false;
+    }
+
+    Node *current = head;
+    bool elemFound = true;
+
+    while (current != nullptr) {
+
+    }
+    if (elemFound == false) {
+        return false;
+    }
+
 }
 
 
