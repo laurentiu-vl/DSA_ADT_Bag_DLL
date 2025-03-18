@@ -26,19 +26,25 @@ void Bag::add(TElem elem) {
         head = firstNode;
         tail = firstNode;
     }
+    else {
+        //case Bag contains the elem or not
+        Node *current = head;
+        while (current != nullptr) {
+            if (current->data.first == elem) {
+                current->data.second++;
+            }
+            //current = current->next;
 
-    //case Bag contains the elem
-    Node *current = head;
-    while (current != nullptr) {
-        if (current->data.first == elem) {
-            current->data.second++;
+            if (current == tail && current->data.first != elem) {
+                Node *lastNode = new Node();
+                lastNode->data = make_pair(elem, 1);
+                lastNode->next = nullptr;
+                lastNode->prev = current;
+                tail = lastNode;
+            }
+            current = current->next;
         }
-        current = current->next;
     }
-
-    //case Bag does not contain
-    //TODO
-
 }
 
 bool Bag::remove(TElem elem) {
@@ -76,7 +82,6 @@ int Bag::nrOccurrences(TElem elem) const {
 
 }
 
-
 int Bag::size() const {
 
     int sizeOf = 0;
@@ -92,6 +97,7 @@ bool Bag::isEmpty() const {
     if (head == nullptr) {
         return true;
     }
+    return false;
 }
 
 BagIterator Bag::iterator() const {
