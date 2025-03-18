@@ -39,8 +39,10 @@ int Bag::nrOccurrences(TElem elem) const {
 
     while (it.valid()) {
         if (it.getCurrent() == elem) {
-            count++;
+            count += it.current->data.second;
+            break;
         }
+    it.next();
     }
     return count;
 
