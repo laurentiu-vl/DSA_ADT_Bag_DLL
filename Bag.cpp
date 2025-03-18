@@ -28,23 +28,31 @@ bool Bag::remove(TElem elem) {
 
 
 bool Bag::search(TElem elem) const {
-    //TODO - Implementation
-    return false;
-}
 
-int Bag::nrOccurrences(TElem elem) const {
-
-    int count = 0;
     BagIterator it = iterator();
 
     while (it.valid()) {
         if (it.getCurrent() == elem) {
-            count += it.current->data.second;
-            break;
+            return true;
         }
-    it.next();
+        it.next();
     }
-    return count;
+    return false;
+
+}
+
+int Bag::nrOccurrences(TElem elem) const {
+
+    //int count = 0;
+    BagIterator it = iterator();
+
+    while (it.valid()) {
+        if (it.getCurrent() == elem) {
+            return it.current->data.second;
+        }
+        it.next();
+    }
+    return 0;
 
 }
 
