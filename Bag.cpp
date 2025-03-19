@@ -55,6 +55,7 @@ bool Bag::remove(TElem elem) {
 
     Node *current = head;
     bool elemFound = false;
+    int Found = 0;
 
     while (current != nullptr) {
         //case only 1 elem, elem=head=tail, and found
@@ -66,7 +67,6 @@ bool Bag::remove(TElem elem) {
                 current = nullptr;
             }
             elemFound = true;
-            break;
         }
 
         //case only 2 elem, head and tail, and found
@@ -83,8 +83,7 @@ bool Bag::remove(TElem elem) {
                     //tail = current->next;
                     head = current->next;
                 }
-            elemFound = true;
-            break;
+                elemFound = true;
             }
             if (current->next->data.first == elem) { //if current->next/tail = elem and freq > 1, just -- the freq
                 if (current->next->data.second > 1) {
@@ -94,11 +93,28 @@ bool Bag::remove(TElem elem) {
                     current->next = nullptr;
                     tail = current;
                 }
-            elemFound = true;
-            break;
+                elemFound = true;
             }
-            //elemFound = true;
         }
+
+        if (elemFound == true) {
+            return true;
+        }
+
+        //general case
+
+        //case current = tail, but it is not head // elem is tail
+        if (current == tail && current->data.first == elem) {
+            if (current->data.second > 1) {
+                current->data.second--;
+                elemFound = true;
+            }
+            if (current->data.second == 1) {
+                tail = current->prev;
+                current = nullptr;
+            }
+        }
+
         if (elemFound == true) {
             return true;
         }
