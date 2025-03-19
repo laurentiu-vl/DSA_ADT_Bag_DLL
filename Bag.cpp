@@ -101,8 +101,6 @@ bool Bag::remove(TElem elem) {
             return true;
         }
 
-        //general case
-
         //case current = tail, but it is not head // elem is tail
         if (current == tail && current->data.first == elem) {
             if (current->data.second > 1) {
@@ -114,6 +112,11 @@ bool Bag::remove(TElem elem) {
                 current = nullptr;
             }
         }
+
+
+        //general case
+
+
 
         if (elemFound == true) {
             return true;
