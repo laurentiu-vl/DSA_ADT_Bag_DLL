@@ -19,6 +19,7 @@ private:
 
 	Node *head;
 	Node *tail;
+	int sizeOfDistinctElement = 0; //for using at remove
 
 	//DO NOT CHANGE THIS PART
 	friend class BagIterator;
@@ -51,6 +52,9 @@ public:
 
 	//destructor
 	~Bag();
+
+	//returns the number of distinct elements in the Bag
+	int sizeOfDistinctElemsFunc() const;
 };
 
 

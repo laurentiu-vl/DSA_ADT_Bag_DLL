@@ -49,34 +49,37 @@ void Bag::add(TElem elem) {
 
 bool Bag::remove(TElem elem) {
 
-    if (head == nullptr) { //if no elem in Bag
+    //if no elem in Bag
+    if (head == nullptr) {
         return false;
     }
 
     Node *current = head;
     bool elemFound = false;
-    int Found = 0;
 
     while (current != nullptr) {
         //case only 1 elem, elem=head=tail, and found
-        if (current == head && current == tail && current->data.first == elem) {
+        if (sizeO == 1 && current->data.first == elem) {
             if (current->data.second > 1) {
                 current->data.second--;
             }
-            if (current->data.second == 1) {
-                current = nullptr;
+            else if (current->data.second == 1) {
+                //current = nullptr;
+                head = nullptr;
+                tail = nullptr;
             }
-            elemFound = true;
+            //elemFound = true;
+            return true;
         }
 
         //case only 2 elem, head and tail, and found
-        if (current == head && current->next == tail) {
-            if (current->data.first == elem) {
+        if (sizeOfDistinctElement == 2 && current->data.first == elem) {
                 //if head/current = elem and freq > 1, just -- the freq
                 if (current->data.second > 1) {
                     current->data.second--;
                 }
-                if (current->data.second == 1) { //if current = elem and freq = 1, then is deleted and tail becomes head
+                //if current = elem and freq = 1, then is deleted and tail becomes head
+                else if (current->data.second == 1) {
                     //current = current->next;
                     current->next->prev = nullptr;
                     current->next->next == nullptr;
@@ -84,22 +87,25 @@ bool Bag::remove(TElem elem) {
                     head = current->next;
                 }
                 elemFound = true;
-            }
-            if (current->next->data.first == elem) { //if current->next/tail = elem and freq > 1, just -- the freq
+
+            //if (current->next->data.first == elem) {
+                //if current->next/tail = elem and freq > 1, just -- the freq
                 if (current->next->data.second > 1) {
                     current->next->data.second--;
                 }
-                if (current->next->data.second == 1) { //if curr->next/tail = elem and freq = 1, tail is deleted, curr becomes also tail
+                //if curr->next/tail = elem and freq = 1, tail is deleted, curr becomes also tail
+                else if (current->next->data.second == 1) {
                     current->next = nullptr;
                     tail = current;
                 }
                 elemFound = true;
-            }
+            //}
         }
 
         if (elemFound == true) {
             return true;
         }
+        return false;
 
         //case current = tail, but it is not head // elem is tail
         if (current == tail && current->data.first == elem) {
@@ -112,11 +118,7 @@ bool Bag::remove(TElem elem) {
                 current = nullptr;
             }
         }
-
-
         //general case
-
-
 
         if (elemFound == true) {
             return true;
@@ -177,11 +179,13 @@ int Bag::nrOccurrences(TElem elem) const {
 int Bag::size() const {
 
     int sizeOf = 0;
+    //int sizeOfDistinctElement = 0;
     Node *current = head;
 
     while (current != nullptr) {
         sizeOf += current->data.second;
         current = current->next;
+        //sizeOfDistinctElement += 1;
     }
     return sizeOf;
 
@@ -218,3 +222,15 @@ Bag::~Bag() {
     //TODO - Implementation
 }
 
+int Bag::sizeOfDistinctElemsFunc() const {
+
+    int sizeOfDistinctElems = 0;
+    Node *current = head;
+
+    while (current != nullptr) {
+        sizeOfDistinctElems += 1;
+        current = current->next;
+    }
+    return sizeOfDistinctElems;
+
+}
