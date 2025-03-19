@@ -54,15 +54,56 @@ bool Bag::remove(TElem elem) {
     }
 
     Node *current = head;
-    bool elemFound = true;
+    bool elemFound = false;
 
     while (current != nullptr) {
+        //case only 1 elem, elem=head=tail, and found
+        if (current == head && current == tail && current->data.first == elem) {
+            if (current->data.second > 1) {
+                current->data.second--;
+            }
+            if (current->data.second == 1) {
+                current = nullptr;
+            }
+            elemFound = true;
+            break;
+        }
 
-    }
-    if (elemFound == false) {
+        //case only 2 elem, head and tail, and found
+        if (current == head && current->next == tail) {
+            if (current->data.first == elem) {
+                //if head/current = elem and freq > 1, just -- the freq
+                if (current->data.second > 1) {
+                    current->data.second--;
+                }
+                if (current->data.second == 1) { //if current = elem and freq = 1, then is deleted and tail becomes head
+                    //current = current->next;
+                    current->next->prev = nullptr;
+                    current->next->next == nullptr;
+                    //tail = current->next;
+                    head = current->next;
+                }
+            elemFound = true;
+            break;
+            }
+            if (current->next->data.first == elem) { //if current->next/tail = elem and freq > 1, just -- the freq
+                if (current->next->data.second > 1) {
+                    current->next->data.second--;
+                }
+                if (current->next->data.second == 1) { //if curr->next/tail = elem and freq = 1, tail is deleted, curr becomes also tail
+                    current->next = nullptr;
+                    tail = current;
+                }
+            elemFound = true;
+            break;
+            }
+            //elemFound = true;
+        }
+        if (elemFound == true) {
+            return true;
+        }
         return false;
     }
-
 }
 
 
