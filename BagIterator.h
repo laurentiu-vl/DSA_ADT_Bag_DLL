@@ -9,7 +9,7 @@ private:
     const Bag& bag;
 
     Bag::Node *current;
-    //int freq;
+    int freq;
 
     BagIterator(const Bag& c);
 public:
@@ -17,4 +17,6 @@ public:
     void next();
     TElem getCurrent() const;
     bool valid() const;
+
+    int getFreq() const;
 };
