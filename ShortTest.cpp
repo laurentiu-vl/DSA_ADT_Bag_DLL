@@ -2,6 +2,7 @@
 #include <assert.h>
 #include "Bag.h"
 #include "BagIterator.h"
+#include <iostream>
 
 
 void testAll() {
