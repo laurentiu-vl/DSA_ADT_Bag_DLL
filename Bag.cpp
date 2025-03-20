@@ -104,17 +104,16 @@ bool Bag::remove(TElem elem) {
         if (current->data.first == elem) {
             if (current->data.second > 1) {
                 current->data.second--;
-            }
-            else if (current->data.second == 1) {
+            } else if (current->data.second == 1) {
                 current->prev->next = current->next;
                 current->next->prev = current->prev;
             }
             current = nullptr;
             return true;
         }
-
         current = current->next;
     }
+    return false;
 }
 
 
