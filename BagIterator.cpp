@@ -22,14 +22,16 @@ void BagIterator::first() {
 }
 
 void BagIterator::next() {
-    if (!valid()) {
-        throw std::out_of_range("Iterator out of range");
-    }
-    if (current->next == nullptr) {
-        current = nullptr; //e ok?
-    } else {
-        current = current->next;
-    }
+    // if (!valid()) {
+    //     throw std::out_of_range("Iterator out of range");
+    // }
+    // if (current->next == nullptr) {
+    //     current = nullptr; //e ok?
+    // } else {
+    //
+    //     current = current->next;
+    // }
+
 }
 
 bool BagIterator::valid() const {
@@ -55,7 +57,7 @@ TElem BagIterator::getCurrent() const {
 
 int BagIterator::getFreq() const {
     if (valid()) {
-        return current->data.second;
+        return freq;
     }
     throw std::out_of_range("Iterator out of range");
 }
