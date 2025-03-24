@@ -106,8 +106,14 @@ bool Bag::remove(TElem elem) {
             if (current->data.second > 1) {
                 current->data.second--;
             } else if (current->data.second == 1) {
-                current->prev->next = current->next;
-                current->next->prev = current->prev;
+                // current->prev->next = current->next;
+                // current->next->prev = current->prev;
+                if (current->prev != nullptr) {
+                    current->prev->next = current->next;
+                }
+                if (current->next != nullptr) {
+                    current->next->prev = current->prev;
+                }
             }
             current = nullptr;
             return true;
@@ -116,7 +122,6 @@ bool Bag::remove(TElem elem) {
     }
     return false;
 }
-
 
 bool Bag::search(TElem elem) const {
     Node *current = head;
