@@ -13,6 +13,7 @@ Bag::Bag() {
 
 void Bag::add(TElem elem) {
     //case Bag is with no elems
+    //cout << "Adding element " << elem << endl;
     if (head == nullptr) {
         Node *firstNode = new Node();
         firstNode->data = make_pair(elem, 1);
