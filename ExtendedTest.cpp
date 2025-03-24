@@ -32,7 +32,7 @@ void testCreate() {
 	for (int i = -10; i < 10; i++) {
 		assert(b.nrOccurrences(i) == 0);
 	}
-
+	//std::cout<<"ceva";
 	BagIterator it = b.iterator();
 	assert(it.valid() == false);
 }
