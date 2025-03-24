@@ -3,6 +3,8 @@
 
 #include <exception>
 #include <assert.h>
+#include <iostream>
+#include <ostream>
 #include <stdexcept>
 
 #include "Bag.h"
@@ -12,6 +14,11 @@ using namespace std;
 
 BagIterator::BagIterator(const Bag &c): bag(c) {
     current = bag.head;
+
+    if (current != nullptr) {
+        freq = current->data.second;
+    }
+
     // if (size()) {
     //
     // }
@@ -32,6 +39,23 @@ void BagIterator::next() {
     //     current = current->next;
     // }
 
+    if (!valid()) {
+        throw std::out_of_range("Iterator out of range");
+    }
+
+    freq--;
+    cout << "Frequency is " << current->data.second - freq << " for element: " << current->data.first << endl;
+
+    if (freq == 0) {
+        current = current->next;
+        if (current->next != nullptr) {
+            freq = current->next->data.second;
+        }
+    }
+    // else {
+    //     freq--;
+    // }
+
 }
 
 bool BagIterator::valid() const {
@@ -39,11 +63,14 @@ bool BagIterator::valid() const {
     if (current == nullptr) {
         return false;
     }
+    if (current->next == nullptr) {
+        return false;
+    }
     return true;
 }
 
 TElem BagIterator::getCurrent() const {
-    if (valid()) {
+    if (current != nullptr) {
         return current->data.first;
     }
     throw std::out_of_range("Iterator out of range");
