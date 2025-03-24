@@ -44,11 +44,17 @@ void BagIterator::next() {
     }
 
     freq--;
-    cout << "Frequency is " << current->data.second - freq << " for element: " << current->data.first << endl;
+    //cout << "Frequency is " << current->data.second - freq << " for element: " << current->data.first << endl;
 
     if (freq == 0) {
         current = current->next;
-        freq = current->data.second;
+        if (current != nullptr) {
+            freq = current->data.second;
+        }
+
+
+
+
         // if (current->next != nullptr) {
         //     freq = current->data.second;
         // }
@@ -64,9 +70,9 @@ bool BagIterator::valid() const {
     if (current == nullptr) {
         return false;
     }
-    if (current->next == nullptr) {
-        return false;
-    }
+    // if (current->next == nullptr) {
+    //     return false;
+    // }
     return true;
 }
 
