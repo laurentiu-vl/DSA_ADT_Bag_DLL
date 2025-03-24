@@ -48,9 +48,10 @@ void BagIterator::next() {
 
     if (freq == 0) {
         current = current->next;
-        if (current->next != nullptr) {
-            freq = current->next->data.second;
-        }
+        freq = current->data.second;
+        // if (current->next != nullptr) {
+        //     freq = current->data.second;
+        // }
     }
     // else {
     //     freq--;
