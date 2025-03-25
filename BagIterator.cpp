@@ -17,14 +17,13 @@ BagIterator::BagIterator(const Bag &c): bag(c) {
 
     if (current != nullptr) {
         freq = current->data.second;
-        currentFreq = freq;
     }
 }
 
 void BagIterator::first() {
     //theta(1)
     current = bag.head;
-    currentFreq = freq; //de verificat
+    freq = current->data.second;
 }
 
 void BagIterator::next() {
@@ -33,25 +32,16 @@ void BagIterator::next() {
     if (!valid()) {
         throw std::out_of_range("Iterator out of range");
     }
-    currentFreq--;
+
+    freq--;
     //cout << "Frequency is " << current->data.second - freq << " for element: " << current->data.first << endl;
 
-    if (currentFreq == 0) {
+    if (freq == 0) {
         current = current->next;
         if (current != nullptr) {
-            currentFreq = current->data.second;
+            freq = current->data.second;
         }
     }
-
-    // freq--;
-    // //cout << "Frequency is " << current->data.second - freq << " for element: " << current->data.first << endl;
-    //
-    // if (freq == 0) {
-    //     current = current->next;
-    //     if (current != nullptr) {
-    //         freq = current->data.second;
-    //     }
-    // }
 }
 
 bool BagIterator::valid() const {
