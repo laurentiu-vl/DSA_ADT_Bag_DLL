@@ -197,7 +197,15 @@ BagIterator Bag::iterator() const {
 }
 
 Bag::~Bag() {
-    //TODO - Implementation
+    Node *current = head;
+
+    while (current != nullptr) {
+        Node *next = current->next;
+        delete current;
+        current = next;
+    }
+    head = nullptr;
+    tail = nullptr;
 }
 
 int Bag::sizeOfDistinctElemsFunc() const {
