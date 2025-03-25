@@ -1,7 +1,6 @@
 #pragma once
 //DO NOT INCLUDE BAGITERATOR
 
-
 //DO NOT CHANGE THIS PART
 #define NULL_TELEM -111111;
 #include <utility>
@@ -56,7 +55,3 @@ public:
 	//returns the number of distinct elements in the Bag
 	int sizeOfDistinctElemsFunc() const;
 };
-
-
-
-
