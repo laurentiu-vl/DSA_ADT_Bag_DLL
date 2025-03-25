@@ -5,12 +5,14 @@
 #include <exception>
 using namespace std;
 
-Bag::Bag() { //theta(1)
+Bag::Bag() {
+    //theta(1)
     head = nullptr;
     tail = nullptr;
 }
 
-void Bag::add(TElem elem) { //O(n)
+void Bag::add(TElem elem) {
+    //O(n)
     //case Bag is with no elems
     //cout << "Adding element " << elem << endl;
     if (head == nullptr) {
@@ -43,21 +45,25 @@ void Bag::add(TElem elem) { //O(n)
     }
 }
 
-bool Bag::remove(TElem elem) { //O(n)
+bool Bag::remove(TElem elem) {
+    //O(n)
 
-    Node* current = head;
+    Node *current = head;
 
     while (current != nullptr) {
-        if (current->data.first == elem) { // elem found
+        if (current->data.first == elem) {
+            // elem found
             if (current->data.second > 1) {
                 current->data.second--;
             } else if (current->data.second == 1) {
-                if (current->prev != nullptr) { //maintain the connection prev
+                if (current->prev != nullptr) {
+                    //maintain the connection prev
                     current->prev->next = current->next;
                 } else {
                     head = current->next; //if current is head ->update the head being the curr->next
                 }
-                if (current->next != nullptr) { //maintain the connection next
+                if (current->next != nullptr) {
+                    //maintain the connection next
                     current->next->prev = current->prev;
                 } else {
                     tail = current->prev; //if current is tail ->update the tail being the curr->prev
@@ -65,7 +71,6 @@ bool Bag::remove(TElem elem) { //O(n)
 
                 // Free memory for the removed node
                 delete current;
-
             }
             return true; // Element was successfully removed
         }
@@ -147,7 +152,8 @@ bool Bag::remove(TElem elem) { //O(n)
     // return false;
 }
 
-bool Bag::search(TElem elem) const { //O(n)
+bool Bag::search(TElem elem) const {
+    //O(n)
     Node *current = head;
 
     while (current != nullptr) {
@@ -159,7 +165,8 @@ bool Bag::search(TElem elem) const { //O(n)
     return false;
 }
 
-int Bag::nrOccurrences(TElem elem) const { //O(n)
+int Bag::nrOccurrences(TElem elem) const {
+    //O(n)
     Node *current = head;
 
     while (current != nullptr) {
@@ -171,7 +178,8 @@ int Bag::nrOccurrences(TElem elem) const { //O(n)
     return 0;
 }
 
-int Bag::size() const { //theta(n)
+int Bag::size() const {
+    //theta(n)
     int sizeOf = 0;
     //int sizeOfDistinctElement = 0;
     Node *current = head;
@@ -184,18 +192,21 @@ int Bag::size() const { //theta(n)
     return sizeOf;
 }
 
-bool Bag::isEmpty() const { //theta(1)
+bool Bag::isEmpty() const {
+    //theta(1)
     if (head == nullptr) {
         return true;
     }
     return false;
 }
 
-BagIterator Bag::iterator() const { //theta(1)
+BagIterator Bag::iterator() const {
+    //theta(1)
     return BagIterator(*this);
 }
 
-Bag::~Bag() { //theta(n)
+Bag::~Bag() {
+    //theta(n)
     Node *current = head;
 
     while (current != nullptr) {
