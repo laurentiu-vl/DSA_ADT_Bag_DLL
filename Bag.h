@@ -53,5 +53,5 @@ public:
 	~Bag();
 
 	//returns the number of distinct elements in the Bag
-	int sizeOfDistinctElemsFunc() const;
+	//int sizeOfDistinctElemsFunc() const;
 };
