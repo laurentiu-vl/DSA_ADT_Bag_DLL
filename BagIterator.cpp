@@ -12,7 +12,7 @@
 using namespace std;
 
 BagIterator::BagIterator(const Bag &c): bag(c) {
-    //theta(1)
+    //theta(1) best: theta(1), worst: theta(1)
     current = bag.head;
 
     if (current != nullptr) {
@@ -21,13 +21,13 @@ BagIterator::BagIterator(const Bag &c): bag(c) {
 }
 
 void BagIterator::first() {
-    //theta(1)
+    //theta(1) best: theta(1), worst: theta(1)
     current = bag.head;
     freq = current->data.second;
 }
 
 void BagIterator::next() {
-    //theta(1)
+    //theta(1) best: theta(1), worst: theta(1)
 
     if (!valid()) {
         throw std::out_of_range("Iterator out of range");
@@ -45,7 +45,7 @@ void BagIterator::next() {
 }
 
 bool BagIterator::valid() const {
-    //theta(1)
+    //theta(1) best: theta(1), worst: theta(1)
 
     if (current == nullptr) {
         return false;
@@ -54,7 +54,7 @@ bool BagIterator::valid() const {
 }
 
 TElem BagIterator::getCurrent() const {
-    //theta(1)
+    //theta(1) best: theta(1), worst: theta(1)
     if (current != nullptr) {
         return current->data.first;
     }
@@ -62,7 +62,7 @@ TElem BagIterator::getCurrent() const {
 }
 
 int BagIterator::getFreq() const {
-    //theta(1)
+    //theta(1) best: theta(1), worst: theta(1)
     if (valid()) {
         return freq;
     }

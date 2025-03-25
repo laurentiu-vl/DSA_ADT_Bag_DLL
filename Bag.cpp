@@ -6,13 +6,13 @@
 using namespace std;
 
 Bag::Bag() {
-    //theta(1)
+    //theta(1) best: theta(1), worst: theta(1)
     head = nullptr;
     tail = nullptr;
 }
 
 void Bag::add(TElem elem) {
-    //O(n)
+    //O(n) best: theta(1), worst: theta(n)
     //case Bag is with no elems
     //cout << "Adding element " << elem << endl;
     if (head == nullptr) {
@@ -46,7 +46,7 @@ void Bag::add(TElem elem) {
 }
 
 bool Bag::remove(TElem elem) {
-    //O(n)
+    //O(n) best: theta(1), worst: theta(n)
 
     Node *current = head;
 
@@ -153,7 +153,7 @@ bool Bag::remove(TElem elem) {
 }
 
 bool Bag::search(TElem elem) const {
-    //O(n)
+    //O(n) best: theta(1), worst: theta(n)
     Node *current = head;
 
     while (current != nullptr) {
@@ -166,7 +166,7 @@ bool Bag::search(TElem elem) const {
 }
 
 int Bag::nrOccurrences(TElem elem) const {
-    //O(n)
+    //O(n) best: theta(1), worst: theta(n)
     Node *current = head;
 
     while (current != nullptr) {
@@ -179,7 +179,7 @@ int Bag::nrOccurrences(TElem elem) const {
 }
 
 int Bag::size() const {
-    //theta(n)
+    //theta(n) best: theta(n), worst: theta(n)
     int sizeOf = 0;
     //int sizeOfDistinctElement = 0;
     Node *current = head;
@@ -193,7 +193,7 @@ int Bag::size() const {
 }
 
 bool Bag::isEmpty() const {
-    //theta(1)
+    //theta(1) best: theta(1), worst: theta(1)
     if (head == nullptr) {
         return true;
     }
@@ -201,12 +201,12 @@ bool Bag::isEmpty() const {
 }
 
 BagIterator Bag::iterator() const {
-    //theta(1)
+    //theta(1) best: theta(1), worst: theta(1)
     return BagIterator(*this);
 }
 
 Bag::~Bag() {
-    //theta(n)
+    //theta(n) best: theta(1), worst: theta(n)
     Node *current = head;
 
     while (current != nullptr) {
