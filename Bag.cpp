@@ -45,82 +45,107 @@ void Bag::add(TElem elem) {
 }
 
 bool Bag::remove(TElem elem) {
-    //if no elem in Bag
-    if (head == nullptr) {
-        return false;
-    }
 
-    Node *current = head;
-    bool elemFound = false;
+    Node* current = head;
 
     while (current != nullptr) {
-        //case only 1 elem, elem=head=tail, and found
-        if (sizeOfDistinctElemsFunc() == 1 && current->data.first == elem) {
+        if (current->data.first == elem) { // elem found
             if (current->data.second > 1) {
                 current->data.second--;
             } else if (current->data.second == 1) {
-                //current = nullptr;
-                head = nullptr;
-                tail = nullptr;
-            }
-            return true;
-        }
-        //case only 2 elem, head and tail, and found
-        if (sizeOfDistinctElemsFunc() == 2 && current->data.first == elem) {
-            //if head/current = elem and freq > 1, just -- the freq
-            if (current->data.second > 1) {
-                current->data.second--;
-            }
-            //if current = elem and freq = 1, then is deleted and tail becomes head
-            else if (current->data.second == 1) {
-                //current = current->next;
-                current->next->prev = nullptr;
-                current->next->next == nullptr;
-                //tail = current->next;
-                head = current->next;
-            }
-            //if current->next/tail = elem and freq > 1, just -- the freq
-            if (current->next->data.second > 1) {
-                current->next->data.second--;
-            }
-            //if curr->next/tail = elem and freq = 1, tail is deleted, curr becomes also tail
-            else if (current->next->data.second == 1) {
-                current->next = nullptr;
-                tail = current;
-            }
-            return true;
-        }
-        //case current = tail, but it is not head // elem is tail
-        if (current == tail && current->data.first == elem) {
-            if (current->data.second > 1) {
-                current->data.second--;
-                //elemFound = true;
-            } else if (current->data.second == 1) {
-                tail = current->prev;
-                //current = nullptr;
-            }
-            return true;
-        }
-        //general case
-        if (current->data.first == elem) {
-            if (current->data.second > 1) {
-                current->data.second--;
-            } else if (current->data.second == 1) {
-                // current->prev->next = current->next;
-                // current->next->prev = current->prev;
-                if (current->prev != nullptr) {
+                if (current->prev != nullptr) { //maintain the connection prev
                     current->prev->next = current->next;
+                } else {
+                    head = current->next; //if current is head ->update the head being the curr->next
                 }
-                if (current->next != nullptr) {
+                if (current->next != nullptr) { //maintain the connection next
                     current->next->prev = current->prev;
+                } else {
+                    tail = current->prev; //if current is tail ->update the tail being the curr->prev
                 }
+
+                // Free memory for the removed node
+                delete current;
+
             }
-            current = nullptr;
-            return true;
+            return true; // Element was successfully removed
         }
-        current = current->next;
+        current = current->next; // Move to the next node
     }
-    return false;
+
+    return false; // Element not found in the bag
+
+    // //if no elem in Bag
+    // if (head == nullptr) {
+    //     return false;
+    // }
+    //
+    // Node *current = head;
+    // bool elemFound = false;
+    //
+    // while (current != nullptr) {
+    //     //case only 1 elem, elem=head=tail, and found
+    //     if (sizeOfDistinctElemsFunc() == 1 && current->data.first == elem) {
+    //         if (current->data.second > 1) {
+    //             current->data.second--;
+    //         } else if (current->data.second == 1) {
+    //             //current = nullptr;
+    //             head = nullptr;
+    //             tail = nullptr;
+    //         }
+    //         return true;
+    //     }
+    //     //case only 2 elem, head and tail, and found
+    //     if (sizeOfDistinctElemsFunc() == 2 && current->data.first == elem) {
+    //         //if head/current = elem and freq > 1, just -- the freq
+    //         if (current->data.second > 1) {
+    //             current->data.second--;
+    //         }
+    //         //if current = elem and freq = 1, then is deleted and tail becomes head
+    //         else if (current->data.second == 1) {
+    //             //current = current->next;
+    //             current->next->prev = nullptr;
+    //             current->next->next == nullptr;
+    //             //tail = current->next;
+    //             head = current->next;
+    //         }
+    //         //if current->next/tail = elem and freq > 1, just -- the freq
+    //         if (current->next->data.second > 1) {
+    //             current->next->data.second--;
+    //         }
+    //         //if curr->next/tail = elem and freq = 1, tail is deleted, curr becomes also tail
+    //         else if (current->next->data.second == 1) {
+    //             current->next = nullptr;
+    //             tail = current;
+    //         }
+    //         return true;
+    //     }
+    //     //case current = tail, but it is not head // elem is tail
+    //     if (current == tail && current->data.first == elem) {
+    //         if (current->data.second > 1) {
+    //             current->data.second--;
+    //             //elemFound = true;
+    //         } else if (current->data.second == 1) {
+    //             tail = current->prev;
+    //             //current = nullptr;
+    //         }
+    //         return true;
+    //     }
+    //     //general case
+    //     if (current->data.first == elem) {
+    //         if (current->data.second > 1) {
+    //             current->data.second--;
+    //         } else if (current->data.second == 1) {
+    //              current->prev->next = current->next;
+    //              current->next->prev = current->prev;
+    //
+    //         }
+    //         current = nullptr;
+    //         return true;
+    //     }
+    //     current = current->next;
+    // }
+    // return false;
 }
 
 bool Bag::search(TElem elem) const {
@@ -133,16 +158,6 @@ bool Bag::search(TElem elem) const {
         current = current->next;
     }
     return false;
-
-    // BagIterator it = iterator();
-    //
-    // while (it.valid()) {
-    //     if (it.getCurrent() == elem) {
-    //         return true;
-    //     }
-    //     it.next();
-    // }
-    // return false;
 }
 
 int Bag::nrOccurrences(TElem elem) const {
@@ -155,16 +170,6 @@ int Bag::nrOccurrences(TElem elem) const {
         current = current->next;
     }
     return 0;
-
-    // BagIterator it = iterator();
-    //
-    // while (it.valid()) {
-    //     if (it.getCurrent() == elem) {
-    //         return it.current->data.second;
-    //     }
-    //     it.next();
-    // }
-    // return 0;
 }
 
 int Bag::size() const {
@@ -178,19 +183,6 @@ int Bag::size() const {
         //sizeOfDistinctElement += 1;
     }
     return sizeOf;
-
-    // try {
-    //     while (iterator().getCurrent()) { //nu se actualizeaza current
-    //         //sizeOf++;
-    //         sizeOf += iterator().current->data.second;
-    //         iterator().next();
-    //         cout << sizeOf;
-    //     }
-    // }
-    // catch (exception& e) {
-    //     return sizeOf;
-    // }
-    // return sizeOf;
 }
 
 bool Bag::isEmpty() const {
