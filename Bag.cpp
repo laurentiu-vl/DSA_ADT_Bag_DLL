@@ -5,13 +5,12 @@
 #include <exception>
 using namespace std;
 
-
-Bag::Bag() {
+Bag::Bag() { //theta(1)
     head = nullptr;
     tail = nullptr;
 }
 
-void Bag::add(TElem elem) {
+void Bag::add(TElem elem) { //O(n)
     //case Bag is with no elems
     //cout << "Adding element " << elem << endl;
     if (head == nullptr) {
@@ -44,7 +43,7 @@ void Bag::add(TElem elem) {
     }
 }
 
-bool Bag::remove(TElem elem) {
+bool Bag::remove(TElem elem) { //O(n)
 
     Node* current = head;
 
@@ -148,7 +147,7 @@ bool Bag::remove(TElem elem) {
     // return false;
 }
 
-bool Bag::search(TElem elem) const {
+bool Bag::search(TElem elem) const { //O(n)
     Node *current = head;
 
     while (current != nullptr) {
@@ -160,7 +159,7 @@ bool Bag::search(TElem elem) const {
     return false;
 }
 
-int Bag::nrOccurrences(TElem elem) const {
+int Bag::nrOccurrences(TElem elem) const { //O(n)
     Node *current = head;
 
     while (current != nullptr) {
@@ -172,7 +171,7 @@ int Bag::nrOccurrences(TElem elem) const {
     return 0;
 }
 
-int Bag::size() const {
+int Bag::size() const { //theta(n)
     int sizeOf = 0;
     //int sizeOfDistinctElement = 0;
     Node *current = head;
@@ -185,18 +184,18 @@ int Bag::size() const {
     return sizeOf;
 }
 
-bool Bag::isEmpty() const {
+bool Bag::isEmpty() const { //theta(1)
     if (head == nullptr) {
         return true;
     }
     return false;
 }
 
-BagIterator Bag::iterator() const {
+BagIterator Bag::iterator() const { //theta(1)
     return BagIterator(*this);
 }
 
-Bag::~Bag() {
+Bag::~Bag() { //theta(n)
     Node *current = head;
 
     while (current != nullptr) {
@@ -208,13 +207,13 @@ Bag::~Bag() {
     tail = nullptr;
 }
 
-int Bag::sizeOfDistinctElemsFunc() const {
-    int sizeOfDistinctElems = 0;
-    Node *current = head;
-
-    while (current != nullptr) {
-        sizeOfDistinctElems += 1;
-        current = current->next;
-    }
-    return sizeOfDistinctElems;
-}
+// int Bag::sizeOfDistinctElemsFunc() const {
+//     int sizeOfDistinctElems = 0;
+//     Node *current = head;
+//
+//     while (current != nullptr) {
+//         sizeOfDistinctElems += 1;
+//         current = current->next;
+//     }
+//     return sizeOfDistinctElems;
+// }
