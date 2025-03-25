@@ -10,6 +10,7 @@ private:
 
     Bag::Node *current;
     int freq;
+    int currentFreq;
 
     BagIterator(const Bag& c);
 public:
