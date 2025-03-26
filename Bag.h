@@ -18,7 +18,7 @@ private:
 
 	Node *head;
 	Node *tail;
-	int sizeOfDistinctElement = 0; //for using at remove
+	//int sizeOfDistinctElement = 0; //for using at remove
 
 	//DO NOT CHANGE THIS PART
 	friend class BagIterator;
