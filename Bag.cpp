@@ -49,6 +49,9 @@ bool Bag::remove(TElem elem) {
     //O(n) best: theta(1), worst: theta(n)
 
     Node *current = head;
+    if (head == nullptr) {
+        return false;
+    }
 
     while (current != nullptr) {
         if (current->data.first == elem) {
