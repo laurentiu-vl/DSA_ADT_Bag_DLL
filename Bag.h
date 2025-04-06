@@ -14,6 +14,9 @@ class Bag {
 		Node *prev;
 	};
 
+	//4. ADT Bag – repräsentiert mithilfe
+	//einer DLL von Paaren der Form (Element, Frequenz).
+
 private:
 
 	Node *head;
