@@ -69,15 +69,13 @@ bool Bag::remove(TElem elem) {
                     tail = current->prev; //if current is tail ->update the tail being the curr->prev
                 }
 
-                // Free memory for the removed node
                 delete current;
             }
-            return true; // Element was successfully removed
+            return true;
         }
-        current = current->next; // Move to the next node
+        current = current->next;
     }
-
-    return false; // Element not found in the bag
+    return false;
 
     // //if no elem in Bag
     // if (head == nullptr) {
