@@ -68,3 +68,28 @@ int BagIterator::getFreq() const {
     }
     throw std::out_of_range("Iterator out of range");
 }
+
+void BagIterator::addAtCurrent(const TElem& e) {
+    Bag::Node* newNode = new Bag::Node;
+    //Bag::Node* prevNode = current->prev;
+    newNode->data.first = e;
+    newNode->data.second = 1;
+
+    if (this->bag.search(e) == false) {
+        if (current->prev != nullptr) {
+            Bag::Node* prevNode = current->prev;
+            prevNode->next = newNode;
+            newNode->prev = prevNode;
+            current->prev = newNode;
+            newNode->next = current;
+        }
+        else {
+            newNode->next = current;
+            current->prev = newNode;
+        }
+    }
+    else {
+
+    }
+}
+

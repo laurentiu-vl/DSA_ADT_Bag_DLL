@@ -17,6 +17,8 @@ class Bag {
 	//4. ADT Bag – repräsentiert mithilfe
 	//einer DLL von Paaren der Form (Element, Frequenz).
 
+	//iterator care adauga element pe pozitia curenta; primeste element si il adauga
+
 private:
 
 	Node *head;

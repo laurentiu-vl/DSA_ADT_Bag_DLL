@@ -154,7 +154,7 @@ bool Bag::remove(TElem elem) {
 }
 
 bool Bag::search(TElem elem) const {
-    //O(n) best: theta(1), worst: theta(n)
+    //O(n) best: theta(n), worst: theta(n)
     Node *current = head;
 
     while (current != nullptr) {

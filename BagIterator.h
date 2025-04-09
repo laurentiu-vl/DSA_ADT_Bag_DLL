@@ -19,4 +19,9 @@ public:
     bool valid() const;
 
     int getFreq() const;
+
+    //iterator care adauga element pe pozitia curenta; primeste element si il adauga
+    //imi faci loc si adaug (nu getcurrent)
+    void addAtCurrent(const TElem& e);
+
 };
