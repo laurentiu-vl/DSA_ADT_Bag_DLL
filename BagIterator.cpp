@@ -70,6 +70,7 @@ int BagIterator::getFreq() const {
 }
 
 void BagIterator::addAtCurrent(const TElem& e) {
+    //O(n), worst theta(n), best theta(n)
     Bag::Node* newNode = new Bag::Node;
     //Bag::Node* prevNode = current->prev;
     newNode->data.first = e;
@@ -89,7 +90,13 @@ void BagIterator::addAtCurrent(const TElem& e) {
         }
     }
     else {
-
+        first();
+        if (valid()) {
+            if (current->data.first == e) {
+                current->data.second++;
+            }
+            next();
+        }
     }
 }
 
