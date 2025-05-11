@@ -1,3 +1,3 @@
-C:/Laurentiu files/Development/SDA 2024_2025 Labs/SDA 2024_2025_Lab2_BagDLL/cmake-build-debug/CMakeFiles/DSA_Bag_DLL_L2.dir
-C:/Laurentiu files/Development/SDA 2024_2025 Labs/SDA 2024_2025_Lab2_BagDLL/cmake-build-debug/CMakeFiles/edit_cache.dir
-C:/Laurentiu files/Development/SDA 2024_2025 Labs/SDA 2024_2025_Lab2_BagDLL/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+C:/Laurentiu files/Development/DSA_ADT_Bag_DLL/cmake-build-debug/CMakeFiles/DSA_Bag_DLL_L2.dir
+C:/Laurentiu files/Development/DSA_ADT_Bag_DLL/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Laurentiu files/Development/DSA_ADT_Bag_DLL/cmake-build-debug/CMakeFiles/rebuild_cache.dir
