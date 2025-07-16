@@ -6,6 +6,10 @@ class BagIterator
     friend class Bag;
 
 private:
+    //TODO - Representation
+    /* ADT Bag – repräsentiert mithilfe einer DLL von Paaren der Form (Element, Frequenz).
+    */
+
     const Bag& bag;
 
     Bag::Node *current;

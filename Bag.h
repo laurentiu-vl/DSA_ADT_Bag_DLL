@@ -5,8 +5,14 @@
 #define NULL_TELEM -111111;
 #include <utility>
 typedef int TElem;
+
 class BagIterator;
 class Bag {
+
+private:
+	//TODO - Representation
+	/* ADT Bag – repräsentiert mithilfe einer DLL von Paaren der Form (Element, Frequenz).
+	*/
 
 	struct Node {
 		std::pair<TElem, int> data; //elem, frecv
@@ -14,14 +20,8 @@ class Bag {
 		Node *prev;
 	};
 
-	//4. ADT Bag – repräsentiert mithilfe
-	//einer DLL von Paaren der Form (Element, Frequenz).
-
-private:
-
 	Node *head;
 	Node *tail;
-	//int sizeOfDistinctElement = 0; //for using at remove
 
 	//DO NOT CHANGE THIS PART
 	friend class BagIterator;
@@ -54,7 +54,4 @@ public:
 
 	//destructor
 	~Bag();
-
-	//returns the number of distinct elements in the Bag
-	//int sizeOfDistinctElemsFunc() const;
 };

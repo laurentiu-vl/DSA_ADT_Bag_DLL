@@ -28,7 +28,6 @@ void BagIterator::first() {
 
 void BagIterator::next() {
     //theta(1) best: theta(1), worst: theta(1)
-
     if (!valid()) {
         throw std::out_of_range("Iterator out of range");
     }
@@ -46,7 +45,6 @@ void BagIterator::next() {
 
 bool BagIterator::valid() const {
     //theta(1) best: theta(1), worst: theta(1)
-
     if (current == nullptr) {
         return false;
     }
