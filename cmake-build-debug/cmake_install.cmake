@@ -1,4 +1,4 @@
-# Install script for directory: C:/Laurentiu files/Development/DSA_ADT_Bag_DLL
+# Install script for directory: C:/Laurentiu files/Development/DSA/DSA_ADT_Bag_DLL
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -52,6 +52,6 @@ endif()
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-  file(WRITE "C:/Laurentiu files/Development/DSA_ADT_Bag_DLL/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
+  file(WRITE "C:/Laurentiu files/Development/DSA/DSA_ADT_Bag_DLL/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")
 endif()
